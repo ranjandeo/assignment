@@ -74,20 +74,29 @@ dependencies {
 
     def presentationDependencies = rootProject.ext.presentationDependencies
     def presentationTestDependencies = rootProject.ext.presentationTestDependencies
+    def developmentDependencies = rootProject.ext.developmentDependencies
 
     implementation project(':domain')
     implementation project(':data')
 
     annotationProcessor presentationDependencies.daggerCompiler
+    annotationProcessor presentationDependencies.butterKnifeAnno
     implementation presentationDependencies.dagger
+    implementation presentationDependencies.butterKnife
     implementation presentationDependencies.appCompatV7
     implementation presentationDependencies.constraintLayout
-    implementation presentationDependencies.butterKnife
     implementation presentationDependencies.recyclerView
+    implementation presentationDependencies.cardView
+    implementation presentationDependencies.glide
     implementation presentationDependencies.rxJava
     implementation presentationDependencies.rxAndroid
     compileOnly presentationDependencies.javaxAnnotation
     implementation presentationDependencies.guava
+    annotationProcessor presentationDependencies.parcelerProcessor
+    implementation presentationDependencies.parceler
+    implementation presentationTestDependencies.junit
+    implementation presentationTestDependencies.testRunner
+    implementation presentationTestDependencies.mockito
 
     androidTestImplementation presentationTestDependencies.mockito
     androidTestImplementation presentationTestDependencies.dexmaker
@@ -96,4 +105,7 @@ dependencies {
     androidTestImplementation presentationTestDependencies.testingSupportLib
     androidTestImplementation presentationTestDependencies.testRunner
     androidTestImplementation presentationTestDependencies.junit
+
+    //Development
+    implementation developmentDependencies.leakCanary
 }

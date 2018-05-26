@@ -13,7 +13,7 @@ ext {
 
     //Libraries
     daggerVersion = '2.8'
-    butterKnifeVersion = '7.0.1'
+    butterKnifeVersion = '8.6.0'
     recyclerViewVersion = '27.1.1'
     rxJavaVersion = '2.0.2'
     rxAndroidVersion = '2.0.1'
@@ -26,6 +26,9 @@ ext {
     appCompatV7 = '27.1.1'
     constraintLayout = '1.1.0'
     guava = '14.0.1'
+    parceler = '1.1.10'
+    cardView = '27.1.1'
+    glide = '3.7.0'
 
     //Testing
     robolectricVersion = '3.1.1'
@@ -37,17 +40,25 @@ ext {
     testingSupportLibVersion = '0.1'
     testRunner = '1.0.2'
 
+    //Development
+    leakCanaryVersion = '1.3.1'
+
     presentationDependencies = [
             daggerCompiler  : "com.google.dagger:dagger-compiler:${daggerVersion}",
             dagger          : "com.google.dagger:dagger:${daggerVersion}",
             butterKnife     : "com.jakewharton:butterknife:${butterKnifeVersion}",
+            butterKnifeAnno : "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
             recyclerView    : "com.android.support:recyclerview-v7:${recyclerViewVersion}",
             rxJava          : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
             rxAndroid       : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
             javaxAnnotation : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
             appCompatV7     : "com.android.support:appcompat-v7:${appCompatV7}",
             constraintLayout: "com.android.support.constraint:constraint-layout:${constraintLayout}",
-            guava           : "com.google.guava:guava:${guava}"
+            guava           : "com.google.guava:guava:${guava}",
+            parceler        : "org.parceler:parceler-api:${parceler}",
+            parcelerProcessor: "org.parceler:parceler:${parceler}",
+            cardView        : "com.android.support:cardview-v7:${cardView}",
+            glide           : "com.github.bumptech.glide:glide:${glide}"
     ]
 
     presentationTestDependencies = [
@@ -57,16 +68,14 @@ ext {
             espresso         : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
             testingSupportLib: "com.android.support.test:testing-support-lib:${testingSupportLibVersion}",
             testRunner       : "com.android.support.test:runner:${testRunner}",
-            junit            : "junit:junit:${jUnitVersion}",
-            guava            : "com.google.guava:guava:${guava}"
+            junit            : "junit:junit:${jUnitVersion}"
     ]
 
     domainDependencies = [
             javaxAnnotation: "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
             javaxInject    : "javax.inject:javax.inject:${javaxInjectVersion}",
             rxJava         : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
-            arrow          : "com.fernandocejas:arrow:${arrowVersion}",
-            guava          : "com.google.guava:guava:${guava}"
+            arrow          : "com.fernandocejas:arrow:${arrowVersion}"
     ]
 
     domainTestDependencies = [
@@ -85,13 +94,17 @@ ext {
             javaxAnnotation   : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
             javaxInject       : "javax.inject:javax.inject:${javaxInjectVersion}",
             androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
-            guava             : "com.google.guava:guava:${guava}"
+            guava          : "com.google.guava:guava:${guava}"
     ]
 
     dataTestDependencies = [
             junit      : "junit:junit:${jUnitVersion}",
             assertj    : "org.assertj:assertj-core:${assertJVersion}",
             mockito    : "org.mockito:mockito-core:${mockitoVersion}",
-            robolectric: "org.robolectric:robolectric:${robolectricVersion}"
+            robolectric: "org.robolectric:robolectric:${robolectricVersion}",
+    ]
+
+    developmentDependencies = [
+            leakCanary: "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
     ]
 }
