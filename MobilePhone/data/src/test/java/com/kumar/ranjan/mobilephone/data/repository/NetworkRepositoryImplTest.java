@@ -5,6 +5,7 @@ import com.kumar.ranjan.mobilephone.data.entity.PhoneEntity;
 import com.kumar.ranjan.mobilephone.data.entity.mapper.ImageEntityMapper;
 import com.kumar.ranjan.mobilephone.data.entity.mapper.PhoneEntityMapper;
 import com.kumar.ranjan.mobilephone.data.repository.datasource.NetworkDataStore;
+import com.kumar.ranjan.mobilephone.data.repository.datasource.PhoneListDataStoreFactory;
 import com.kumar.ranjan.mobilephone.domain.repository.NetworkRepository;
 
 import org.assertj.core.util.Lists;
@@ -34,11 +35,13 @@ public class NetworkRepositoryImplTest {
     @Mock
     private ImageEntityMapper imageEntityMapper;
     @Mock
-    private NetworkDataStore networkDataStore;
+    private PhoneListDataStoreFactory dataStoreFactory;
+    @Mock
+    NetworkDataStore networkDataStore;
 
     @Before
     public void setUp() {
-        networkRepository = new NetworkRepositoryImpl(networkDataStore, phoneEntityMapper, imageEntityMapper);
+        networkRepository = new NetworkRepositoryImpl(dataStoreFactory, phoneEntityMapper, imageEntityMapper);
     }
 
     @Test
@@ -46,6 +49,7 @@ public class NetworkRepositoryImplTest {
         // Arrange
         List<PhoneEntity> phoneEntityList = Lists.newArrayList();
         phoneEntityList.add(new PhoneEntity());
+        given(dataStoreFactory.createCloudDataStore()).willReturn(networkDataStore);
         given(networkDataStore.phoneEntityList()).willReturn(Observable.just(phoneEntityList));
 
         // Act
@@ -60,6 +64,7 @@ public class NetworkRepositoryImplTest {
         // Arrange
         List<ImageEntity> imageEntityList = Lists.newArrayList();
         imageEntityList.add(new ImageEntity());
+        given(dataStoreFactory.createCloudDataStore()).willReturn(networkDataStore);
         given(networkDataStore.imageEntityList(anyInt())).willReturn(Observable.just(imageEntityList));
 
         // Act

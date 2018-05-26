@@ -25,9 +25,10 @@ public class ImageEntityMapper {
      * @return Image
      */
     public Image transform(ImageEntity imageEntity) {
-        Image image = new Image();
+        Image image = null;
 
         if (imageEntity != null) {
+            image = new Image();
             image.setId(imageEntity.getId());
             image.setMobileId(imageEntity.getMobileId());
             image.setUrl(imageEntity.getUrl());
@@ -45,7 +46,10 @@ public class ImageEntityMapper {
 
         if (imageEntities != null && !imageEntities.isEmpty()) {
             for (ImageEntity imageEntity : imageEntities) {
-                imageList.add(transform(imageEntity));
+                Image image = transform(imageEntity);
+                if (image != null) {
+                    imageList.add(image);
+                }
             }
         }
 

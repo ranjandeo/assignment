@@ -12,7 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 @RunWith(MockitoJUnitRunner.class)
 public class PhoneTest {
 
-    Phone phone;
+    private Phone phone;
 
     @Before
     public void setUp() {

@@ -22,9 +22,10 @@ public class PhoneEntityMapper {
      * @return Phone object
      */
     public Phone transform(PhoneEntity phoneEntity) {
-        Phone phone = new Phone();
+        Phone phone = null;
 
         if (phoneEntity != null) {
+            phone = new Phone();
             phone.setId(phoneEntity.getId());
             phone.setName(phoneEntity.getName());
             phone.setBrand(phoneEntity.getBrand());
@@ -47,7 +48,10 @@ public class PhoneEntityMapper {
 
         if (phoneEntityList != null && !phoneEntityList.isEmpty()) {
             for (PhoneEntity phoneEntity : phoneEntityList) {
-                phoneList.add(transform(phoneEntity));
+                Phone phone = transform(phoneEntity);
+                if (phone != null) {
+                    phoneList.add(phone);
+                }
             }
         }
 
