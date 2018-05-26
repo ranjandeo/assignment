@@ -87,6 +87,7 @@ dependencies {
     implementation dataDependencies.rxJava
     implementation dataDependencies.rxAndroid
     implementation dataDependencies.androidAnnotations
+    implementation dataDependencies.guava
 
     testImplementation testDependencies.junit
     testImplementation testDependencies.assertj
