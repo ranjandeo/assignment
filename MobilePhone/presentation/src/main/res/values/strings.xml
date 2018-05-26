@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MobilePhone</string>
+
+    <string name="no_network_message">Oops!! no network connection!</string>
+    <string name="generic_error_message">Some technical error occured!</string>
+    <string name="json_error_message">JSON data is not well formed!</string>
+
+    <string name="price_text">Price: $%1$s</string>
+    <string name="rating_text">Rating: %1$s</string>
+
 </resources>

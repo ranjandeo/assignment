@@ -3,10 +3,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-    <FrameLayout
-            android:id="@+id/fragmentContainer"
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/phone_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/cardview_shadow_end_color"/>
+            android:layout_margin="@dimen/item_padding"/>
+
+    <include
+            layout="@layout/view_progress"/>
+
+    <include
+            layout="@layout/view_error_message"/>
 
 </RelativeLayout>
