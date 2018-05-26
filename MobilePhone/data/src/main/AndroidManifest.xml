@@ -1,2 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.kumar.ranjan.mobilephone.data"/>
+          package="com.kumar.ranjan.mobilephone.data">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+</manifest>

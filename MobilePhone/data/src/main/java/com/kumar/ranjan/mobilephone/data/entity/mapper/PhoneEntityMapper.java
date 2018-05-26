@@ -1,6 +1,7 @@
 package com.kumar.ranjan.mobilephone.data.entity.mapper;
 
-import com.fernandocejas.arrow.collections.Lists;
+import com.google.common.collect.Lists;
+
 import com.kumar.ranjan.mobilephone.data.entity.PhoneEntity;
 import com.kumar.ranjan.mobilephone.domain.Phone;
 
