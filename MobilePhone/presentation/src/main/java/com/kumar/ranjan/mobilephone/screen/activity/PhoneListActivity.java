@@ -86,7 +86,7 @@ public class PhoneListActivity extends BaseAppCompatActivity implements HasCompo
     @Override
     public void onRemovedFromFavorite(PhoneDataModel phoneDataModel) {
         if (fragmentsAdapter != null) {
-            ((PhoneListScreen) fragmentsAdapter.getItem(0)).onRemedFromFavorite(phoneDataModel);
+            ((PhoneListScreen) fragmentsAdapter.getItem(0)).onRemovedFromFavorite(phoneDataModel);
         }
     }
 

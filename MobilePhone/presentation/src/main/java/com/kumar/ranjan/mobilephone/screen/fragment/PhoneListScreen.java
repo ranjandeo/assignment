@@ -16,5 +16,5 @@ public interface PhoneListScreen extends IScreenDataView {
 
     void onMarkedAsFavorite(PhoneDataModel phoneDataModel);
 
-    void onRemedFromFavorite(PhoneDataModel phoneDataModel);
+    void onRemovedFromFavorite(PhoneDataModel phoneDataModel);
 }

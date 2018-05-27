@@ -172,7 +172,7 @@ public class PhoneListFragment extends BaseFragment implements PhoneListScreen {
     }
 
     @Override
-    public void onRemedFromFavorite(PhoneDataModel phoneDataModel) {
+    public void onRemovedFromFavorite(PhoneDataModel phoneDataModel) {
         phoneListPresenter.onRemedFromFavorite(phoneDataModel);
     }
 }
