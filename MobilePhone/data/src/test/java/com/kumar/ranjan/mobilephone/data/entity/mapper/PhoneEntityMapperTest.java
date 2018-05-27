@@ -49,6 +49,7 @@ public class PhoneEntityMapperTest {
         assertThat(phone.getThumbImageURL(), is("url"));
         assertThat(phone.getPrice(), is(100.0));
         assertThat(phone.getRating(), is(4.0));
+        assertThat(phone.isFavorite(), is(false));
     }
 
     @Test
@@ -80,6 +81,7 @@ public class PhoneEntityMapperTest {
         assertThat(phoneList.get(0).getThumbImageURL(), is("url"));
         assertThat(phoneList.get(0).getPrice(), is(100.0));
         assertThat(phoneList.get(0).getRating(), is(4.0));
+        assertThat(phoneList.get(0).isFavorite(), is(false));
     }
 
     private PhoneEntity getMockPhoneEntity(int id, String name, String brand, String description, String url, double price, double rating) {

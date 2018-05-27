@@ -32,11 +32,12 @@ public class PhoneTest {
         assertThat(phone.getThumbImageURL(), is(""));
         assertThat(phone.getPrice(), is(0.0));
         assertThat(phone.getRating(), is(0.0));
+        assertThat(phone.isFavorite(), is(false));
     }
 
     @Test
     public void testParameterisedConstructor() {
-        phone = new Phone(1, "Name", "Brand", "Description", "url", 100.0, 4.0);
+        phone = new Phone(1, "Name", "Brand", "Description", "url", 100.0, 4.0, false);
 
         assertThat(phone.getId(), is(1));
         assertThat(phone.getName(), is(notNullValue()));
@@ -49,6 +50,7 @@ public class PhoneTest {
         assertThat(phone.getThumbImageURL(), is("url"));
         assertThat(phone.getPrice(), is(100.0));
         assertThat(phone.getRating(), is(4.0));
+        assertThat(phone.isFavorite(), is(false));
     }
 
     @Test
@@ -60,6 +62,7 @@ public class PhoneTest {
         phone.setThumbImageURL("url");
         phone.setPrice(100.0);
         phone.setRating(4.0);
+        phone.setFavorite(true);
 
         assertThat(phone.getId(), is(1));
         assertThat(phone.getName(), is(notNullValue()));
@@ -72,5 +75,6 @@ public class PhoneTest {
         assertThat(phone.getThumbImageURL(), is("url"));
         assertThat(phone.getPrice(), is(100.0));
         assertThat(phone.getRating(), is(4.0));
+        assertThat(phone.isFavorite(), is(true));
     }
 }

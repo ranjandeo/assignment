@@ -14,8 +14,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PhoneDataModelMapperTest {
@@ -29,7 +29,7 @@ public class PhoneDataModelMapperTest {
     @Test
     public void transformObject() {
         // Arrange
-        Phone phone = getMockPhone(1, "name", "brand", "description", "url", 100.0, 4.0);
+        Phone phone = getMockPhone(1, "name", "brand", "description", "url", 100.0, 4.0, false);
 
         // Act
         PhoneDataModel phoneDataModel = phoneDataModelMapper.transform(phone);
@@ -47,14 +47,15 @@ public class PhoneDataModelMapperTest {
         assertThat(phoneDataModel.getThumbImageURL(), is("url"));
         assertThat(phoneDataModel.getPrice(), is(100.0));
         assertThat(phoneDataModel.getRating(), is(4.0));
+        assertThat(phone.isFavorite(), is(false));
     }
 
     @Test
     public void transformList() {
         // Arrange
         List<Phone> phoneList = Lists.newArrayList();
-        phoneList.add(getMockPhone(1, "name", "brand", "description", "url", 100.0, 4.0));
-        phoneList.add(getMockPhone(2, "name2", "brand2", "description2", "url2", 200.0, 4.5));
+        phoneList.add(getMockPhone(1, "name", "brand", "description", "url", 100.0, 4.0, false));
+        phoneList.add(getMockPhone(2, "name2", "brand2", "description2", "url2", 200.0, 4.5, false));
 
         // Act
         List<PhoneDataModel> phoneDataModelList = phoneDataModelMapper.transform(phoneList);
@@ -66,7 +67,8 @@ public class PhoneDataModelMapperTest {
         assertThat(phoneDataModelList.get(0), is(CoreMatchers.<PhoneDataModel>instanceOf(PhoneDataModel.class)));
     }
 
-    private Phone getMockPhone(int id, String name, String brand, String description, String url, double price, double rating) {
+    private Phone getMockPhone(int id, String name, String brand, String description, String url, double price, double rating,
+                               boolean isFavorite) {
         Phone phone = new Phone();
 
         phone.setId(id);
@@ -76,6 +78,7 @@ public class PhoneDataModelMapperTest {
         phone.setThumbImageURL(url);
         phone.setPrice(price);
         phone.setRating(rating);
+        phone.setFavorite(isFavorite);
 
         return phone;
     }
