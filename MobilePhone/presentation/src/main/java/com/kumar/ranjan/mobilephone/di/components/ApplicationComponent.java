@@ -3,6 +3,7 @@ package com.kumar.ranjan.mobilephone.di.components;
 import com.kumar.ranjan.mobilephone.di.modules.ApplicationModule;
 import com.kumar.ranjan.mobilephone.domain.executor.PostExecutionThread;
 import com.kumar.ranjan.mobilephone.domain.executor.ThreadExecutor;
+import com.kumar.ranjan.mobilephone.domain.repository.FavoritesRepository;
 import com.kumar.ranjan.mobilephone.domain.repository.NetworkRepository;
 import com.kumar.ranjan.mobilephone.screen.activity.BaseAppCompatActivity;
 
@@ -24,4 +25,6 @@ public interface ApplicationComponent {
     PostExecutionThread postExecutionThread();
 
     NetworkRepository networkRepository();
+
+    FavoritesRepository favoritesRepository();
 }

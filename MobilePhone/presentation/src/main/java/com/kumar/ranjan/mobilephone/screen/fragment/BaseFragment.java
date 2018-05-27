@@ -2,7 +2,8 @@ package com.kumar.ranjan.mobilephone.screen.fragment;
 
 import com.kumar.ranjan.mobilephone.di.HasComponent;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
+
 
 public abstract class BaseFragment extends Fragment {
 

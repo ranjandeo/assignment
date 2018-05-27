@@ -6,15 +6,17 @@ import com.kumar.ranjan.mobilephone.screen.dialog.SortOptionType;
 
 import java.util.List;
 
-public interface PhoneListScreen extends IScreenDataView {
+public interface FavoriteListScreen extends IScreenDataView {
 
-    void displayPhoneList(List<PhoneDataModel> phoneDataModelList);
+    void displayFavoriteList(List<PhoneDataModel> phoneDataModelList);
 
     void showPhoneDetails(PhoneDataModel phoneDataModel);
 
     void applySorting(SortOptionType sortOptionType);
 
-    void onMarkedAsFavorite(PhoneDataModel phoneDataModel);
+    void showNoFavoritesMessage();
 
-    void onRemedFromFavorite(PhoneDataModel phoneDataModel);
+    void refreshFavoriteList();
+
+    void hideErrorMessage();
 }

@@ -5,35 +5,58 @@ import com.kumar.ranjan.mobilephone.di.HasComponent;
 import com.kumar.ranjan.mobilephone.di.components.DaggerPhoneListComponent;
 import com.kumar.ranjan.mobilephone.di.components.PhoneListComponent;
 import com.kumar.ranjan.mobilephone.model.PhoneDataModel;
+import com.kumar.ranjan.mobilephone.screen.adapter.FragmentsAdapter;
 import com.kumar.ranjan.mobilephone.screen.dialog.SortOptionDialogFragment;
 import com.kumar.ranjan.mobilephone.screen.dialog.SortOptionType;
-import com.kumar.ranjan.mobilephone.screen.fragment.PhoneListFragment;
+import com.kumar.ranjan.mobilephone.screen.fragment.FavoriteListScreen;
 import com.kumar.ranjan.mobilephone.screen.fragment.PhoneListItemClickListener;
+import com.kumar.ranjan.mobilephone.screen.fragment.PhoneListScreen;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class PhoneListActivity extends BaseAppCompatActivity implements HasComponent<PhoneListComponent>,
-        PhoneListItemClickListener, SortOptionDialogFragment.SortOptionSelectionListener {
+        PhoneListItemClickListener, SortOptionDialogFragment.SortOptionSelectionListener, TabLayout.OnTabSelectedListener {
 
     private static String SORT_DIALOG = "sort_dialog";
 
     private PhoneListComponent phoneListComponent;
     private SortOptionDialogFragment dialogFragment;
-    private PhoneListFragment phoneListFragment;
+
+    @BindView(R.id.tab_layout)
+    TabLayout tabLayout;
+
+    @BindView(R.id.fragment_view_pager)
+    ViewPager viewPager;
+
+    private FragmentsAdapter fragmentsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_list);
+
+        ButterKnife.bind(this);
+
         dialogFragment = new SortOptionDialogFragment();
 
         initializeInjector();
-        if (savedInstanceState == null) {
-            phoneListFragment = new PhoneListFragment();
-            addFragment(R.id.fragmentContainer, phoneListFragment);
-        }
+
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.mobile_list)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.favorite_list)));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        tabLayout.setOnTabSelectedListener(this);
+
+        fragmentsAdapter = new FragmentsAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(fragmentsAdapter);
     }
 
     private void initializeInjector() {
@@ -51,6 +74,20 @@ public class PhoneListActivity extends BaseAppCompatActivity implements HasCompo
     @Override
     public void onPhoneItemClicked(PhoneDataModel phoneDataModel) {
         activityRouter.goToPhoneDetailsPage(this, phoneDataModel);
+    }
+
+    @Override
+    public void onMarkedAsFavorite(PhoneDataModel phoneDataModel) {
+        if (fragmentsAdapter != null) {
+            ((FavoriteListScreen) fragmentsAdapter.getItem(1)).refreshFavoriteList();
+        }
+    }
+
+    @Override
+    public void onRemovedFromFavorite(PhoneDataModel phoneDataModel) {
+        if (fragmentsAdapter != null) {
+            ((PhoneListScreen) fragmentsAdapter.getItem(0)).onRemedFromFavorite(phoneDataModel);
+        }
     }
 
     @Override
@@ -80,9 +117,25 @@ public class PhoneListActivity extends BaseAppCompatActivity implements HasCompo
 
     @Override
     public void onSortOptionSelected(SortOptionType sortOptionType) {
-        if (phoneListFragment != null) {
-            phoneListFragment.applySorting(sortOptionType);
+        if (fragmentsAdapter != null) {
+            ((PhoneListScreen) fragmentsAdapter.getItem(0)).applySorting(sortOptionType);
+            ((FavoriteListScreen) fragmentsAdapter.getItem(1)).applySorting(sortOptionType);
         }
+    }
+
+    @Override
+    public void onTabSelected(TabLayout.Tab tab) {
+        viewPager.setCurrentItem(tab.getPosition());
+    }
+
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
+
+    }
+
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
+
     }
 }
 

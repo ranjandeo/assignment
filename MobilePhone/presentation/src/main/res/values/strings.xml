@@ -4,11 +4,16 @@
     <string name="no_network_message">Oops!! no network connection!</string>
     <string name="generic_error_message">Some technical error occured!</string>
     <string name="json_error_message">JSON data is not well formed!</string>
+    <string name="no_favorite_mobile">No favorite mobiles yet!!</string>
 
     <string name="price_text">Price: $%1$s</string>
     <string name="rating_text">Rating: %1$s</string>
     <string name="phone_details">Phone Details</string>
     <string name="sort">Sort</string>
+
+    <string name="mobile_list">Mobile List</string>
+    <string name="favorite_list">Favorite List</string>
+    <string name="delete">DELETE</string>
 
     <string name="price_low_to_high">Price low to high</string>
     <string name="price_high_to_low">Price high to low</string>

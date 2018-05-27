@@ -2,10 +2,12 @@ package com.kumar.ranjan.mobilephone.di.modules;
 
 import com.kumar.ranjan.mobilephone.MobilePhoneBuyerGuideApplication;
 import com.kumar.ranjan.mobilephone.data.executor.JobExecutor;
+import com.kumar.ranjan.mobilephone.data.repository.FavoritesRepostoryImpl;
 import com.kumar.ranjan.mobilephone.data.repository.NetworkRepositoryImpl;
 import com.kumar.ranjan.mobilephone.di.UIThread;
 import com.kumar.ranjan.mobilephone.domain.executor.PostExecutionThread;
 import com.kumar.ranjan.mobilephone.domain.executor.ThreadExecutor;
+import com.kumar.ranjan.mobilephone.domain.repository.FavoritesRepository;
 import com.kumar.ranjan.mobilephone.domain.repository.NetworkRepository;
 
 import android.content.Context;
@@ -45,5 +47,11 @@ public class ApplicationModule {
     @Singleton
     NetworkRepository provideNetworkRepository(NetworkRepositoryImpl networkRepository) {
         return networkRepository;
+    }
+
+    @Provides
+    @Singleton
+    FavoritesRepository provideFavoritesRepository(FavoritesRepostoryImpl favoritesRepository) {
+        return favoritesRepository;
     }
 }

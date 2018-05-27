@@ -132,9 +132,17 @@ public class PhoneListFragment extends BaseFragment implements PhoneListScreen {
 
     private PhoneListAdapter.OnItemClickListener onItemClickListener =
             new PhoneListAdapter.OnItemClickListener() {
-                @Override public void onPhoneItemClicked(PhoneDataModel phoneDataModel) {
+                @Override
+                public void onPhoneItemClicked(PhoneDataModel phoneDataModel) {
                     if (phoneListPresenter != null && phoneDataModel != null) {
                         phoneListPresenter.onPhoneListItemClicked(phoneDataModel);
+                    }
+                }
+
+                @Override
+                public void onFavoriteButtonClicked(PhoneDataModel phoneDataModel) {
+                    if (phoneListPresenter != null && phoneDataModel != null) {
+                        phoneListPresenter.onFavoriteButtonClicked(phoneDataModel);
                     }
                 }
             };
@@ -156,5 +164,15 @@ public class PhoneListFragment extends BaseFragment implements PhoneListScreen {
     @Override
     public void applySorting(SortOptionType sortOptionType) {
         phoneListPresenter.applySorting(sortOptionType);
+    }
+
+    @Override
+    public void onMarkedAsFavorite(PhoneDataModel phoneDataModel) {
+        phoneListItemClickListener.onMarkedAsFavorite(phoneDataModel);
+    }
+
+    @Override
+    public void onRemedFromFavorite(PhoneDataModel phoneDataModel) {
+        phoneListPresenter.onRemedFromFavorite(phoneDataModel);
     }
 }

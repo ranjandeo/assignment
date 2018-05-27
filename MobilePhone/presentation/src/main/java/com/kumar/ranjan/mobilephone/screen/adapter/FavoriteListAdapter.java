@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -22,13 +23,12 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PhoneListAdapter extends RecyclerView.Adapter<PhoneListAdapter.PhoneViewHolder> {
+public class FavoriteListAdapter extends RecyclerView.Adapter<FavoriteListAdapter.PhoneViewHolder> {
 
     private Context context;
 
     public interface OnItemClickListener {
         void onPhoneItemClicked(PhoneDataModel phoneDataModel);
-        void onFavoriteButtonClicked(PhoneDataModel phoneDataModel);
     }
 
     private List<PhoneDataModel> phoneList;
@@ -37,7 +37,7 @@ public class PhoneListAdapter extends RecyclerView.Adapter<PhoneListAdapter.Phon
     private OnItemClickListener onItemClickListener;
 
     @Inject
-    public PhoneListAdapter(Context context) {
+    public FavoriteListAdapter(Context context) {
         this.context = context;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         phoneList = Lists.newArrayList();
@@ -50,7 +50,7 @@ public class PhoneListAdapter extends RecyclerView.Adapter<PhoneListAdapter.Phon
 
     @Override
     public PhoneViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View view = layoutInflater.inflate(R.layout.phone_row_view, parent, false);
+        final View view = layoutInflater.inflate(R.layout.favorite_row_view, parent, false);
         return new PhoneViewHolder(view);
     }
 
@@ -63,25 +63,12 @@ public class PhoneListAdapter extends RecyclerView.Adapter<PhoneListAdapter.Phon
         holder.textViewPrice.setText(getFormattedPrice(phoneDataModel.getPrice()));
         holder.textViewRating.setText(getFormattedRating(phoneDataModel.getRating()));
 
-        int favImageResource = phoneDataModel.isFavorite() ? R.drawable.ic_favorite_fill : R.drawable.ic_favorite_grey;
-        holder.imageViewFavorite.setImageResource(favImageResource);
-
         Glide.with(context).load(phoneDataModel.getThumbImageURL()).into(holder.imageViewThumbnail);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
                 if (onItemClickListener != null) {
                     onItemClickListener.onPhoneItemClicked(phoneDataModel);
-                }
-            }
-        });
-
-        holder.imageViewFavorite.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-                if (onItemClickListener != null) {
-                    phoneDataModel.setFavorite(!phoneDataModel.isFavorite());
-                    onItemClickListener.onFavoriteButtonClicked(phoneDataModel);
-                    notifyDataSetChanged();
                 }
             }
         });
@@ -111,9 +98,6 @@ public class PhoneListAdapter extends RecyclerView.Adapter<PhoneListAdapter.Phon
         @BindView(R.id.phone_name)
         TextView textViewPhoneName;
 
-        @BindView(R.id.image_fav_view)
-        ImageView imageViewFavorite;
-
         @BindView(R.id.description)
         TextView textViewDescription;
 
@@ -137,5 +121,18 @@ public class PhoneListAdapter extends RecyclerView.Adapter<PhoneListAdapter.Phon
     private String getFormattedRating(double rating) {
         String strrating = String.format(Locale.ENGLISH, "%.1f", rating);
         return context.getResources().getString(R.string.rating_text, strrating);
+    }
+
+    public void removeItemAtPosition(int position) {
+        if (!phoneList.isEmpty() && phoneList.size() > position) {
+            phoneList.remove(position);
+        }
+    }
+
+    public PhoneDataModel getItemAtPosition(int position) {
+        if (!phoneList.isEmpty() && phoneList.size() > position) {
+            return phoneList.get(position);
+        }
+        return null;
     }
 }

@@ -29,31 +29,15 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                <LinearLayout
+                <TextView
+                        android:id="@+id/phone_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:paddingTop="@dimen/item_padding"
                         android:paddingLeft="@dimen/item_padding"
-                        android:paddingRight="@dimen/item_padding">
-
-                    <TextView
-                            android:id="@+id/phone_name"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textColor="@color/blackPrimary"
-                            android:textSize="@dimen/title_text_size" />
-
-                    <ImageView
-                            android:id="@+id/image_fav_view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:clickable="true"
-                            android:src="@drawable/ic_favorite_grey"/>
-
-                </LinearLayout>
-
+                        android:paddingRight="@dimen/item_padding"
+                        android:textColor="@color/blackPrimary"
+                        android:textSize="@dimen/title_text_size" />
 
                 <TextView
                         android:id="@+id/description"
