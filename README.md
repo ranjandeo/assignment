@@ -1,1 +1,11 @@
 # assignment
+![Alt text](/assignment/blob/master/Screenshot_1527463539.png?raw=true "Mobile phone list")
+![Alt text](/assignment/blob/master/Screenshot_1527463549.png?raw=true "Empty favorite list")
+![Alt text](/assignment/blob/master/Screenshot_1527463556.png?raw=true "Adding as favorite")
+![Alt text](/assignment/blob/master/Screenshot_1527463572.png?raw=true "Deleting a favorite")
+![Alt text](/assignment/blob/master/Screenshot_1527463637.png?raw=true "Multiple favorite items")
+![Alt text](/assignment/blob/master/Screenshot_1527463640.png?raw=true "Favorite list")
+![Alt text](/assignment/blob/master/Screenshot_1527463653.png?raw=true "Details screen")
+![Alt text](/assignment/blob/master/Screenshot_1527463662.png?raw=true "Sorting dialog")
+![Alt text](/assignment/blob/master/Screenshot_1527463673.png?raw=true "Sorted results")
+![Alt text](/assignment/blob/master/device-2018-05-28-063400.mp4?raw=true "Video")
