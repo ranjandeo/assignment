@@ -13,6 +13,7 @@ public class PhoneDataModel {
     String thumbImageURL;
     double price;
     double rating;
+    boolean isFavorite;
 
     public PhoneDataModel() {
         name = EMPTY_STRING;
@@ -21,7 +22,8 @@ public class PhoneDataModel {
         thumbImageURL = EMPTY_STRING;
     }
 
-    public PhoneDataModel(int id, String name, String brand, String description, String thumbImageURL, double price, double rating) {
+    public PhoneDataModel(int id, String name, String brand, String description, String thumbImageURL, double price, double rating,
+                          boolean isFavorite) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -29,6 +31,7 @@ public class PhoneDataModel {
         this.thumbImageURL = thumbImageURL;
         this.price = price;
         this.rating = rating;
+        this.isFavorite = isFavorite;
     }
 
     public int getId() {
@@ -85,5 +88,13 @@ public class PhoneDataModel {
 
     public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 }

@@ -31,12 +31,14 @@ public class NetworkRepositoryImpl implements NetworkRepository {
         this.imageEntityMapper = imageEntityMapper;
     }
 
-    @Override public Observable<List<Phone>> phoneList() {
+    @Override
+    public Observable<List<Phone>> phoneList() {
         NetworkDataStore networkDataStore = phoneListDataStoreFactory.createCloudDataStore();
         return networkDataStore.phoneEntityList().map(phoneEntityMapper::transform);
     }
 
-    @Override public Observable<List<Image>> imageList(int mobileId) {
+    @Override
+    public Observable<List<Image>> imageList(int mobileId) {
         NetworkDataStore networkDataStore = phoneListDataStoreFactory.createCloudDataStore();
         return networkDataStore.imageEntityList(mobileId).map(imageEntityMapper::transform);
     }

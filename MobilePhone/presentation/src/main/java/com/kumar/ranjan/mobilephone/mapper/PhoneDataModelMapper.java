@@ -33,6 +33,7 @@ public class PhoneDataModelMapper {
             phoneDataModel.setThumbImageURL(phone.getThumbImageURL());
             phoneDataModel.setPrice(phone.getPrice());
             phoneDataModel.setRating(phone.getRating());
+            phoneDataModel.setFavorite(phone.isFavorite());
         }
 
         return phoneDataModel;
@@ -56,6 +57,49 @@ public class PhoneDataModelMapper {
         }
 
         return phoneDataModelList;
+    }
+
+    /**
+     * Transform PhoneDataModel object to Phone object
+     * @param phoneDataModel
+     * @return
+     */
+    public Phone transform(PhoneDataModel phoneDataModel) {
+        Phone phone = null;
+
+        if (phoneDataModel != null) {
+            phone = new Phone();
+            phone.setId(phoneDataModel.getId());
+            phone.setName(phoneDataModel.getName());
+            phone.setBrand(phoneDataModel.getBrand());
+            phone.setDescription(phoneDataModel.getDescription());
+            phone.setThumbImageURL(phoneDataModel.getThumbImageURL());
+            phone.setPrice(phoneDataModel.getPrice());
+            phone.setRating(phoneDataModel.getRating());
+            phone.setFavorite(phoneDataModel.isFavorite());
+        }
+
+        return phone;
+    }
+
+    /**
+     * Transform list of PhoneDataModel objects to list of Phone objects
+     * @param phoneDataModels
+     * @return
+     */
+    public List<Phone> transformPhoneDataModelList(List<PhoneDataModel> phoneDataModels) {
+        List<Phone> phoneList = Lists.newArrayList();
+
+        if (phoneDataModels != null && !phoneDataModels.isEmpty()) {
+            for (PhoneDataModel phoneDataModel : phoneDataModels) {
+                Phone phone = transform(phoneDataModel);
+                if (phone != null) {
+                    phoneList.add(phone);
+                }
+            }
+        }
+
+        return phoneList;
     }
 
 }

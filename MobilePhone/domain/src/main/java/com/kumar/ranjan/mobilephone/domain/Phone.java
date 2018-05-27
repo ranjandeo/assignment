@@ -10,6 +10,7 @@ public class Phone {
     private String thumbImageURL;
     private double price;
     private double rating;
+    private boolean isFavorite;
 
     public Phone() {
         name = EMPTY_STRING;
@@ -18,7 +19,8 @@ public class Phone {
         thumbImageURL = EMPTY_STRING;
     }
 
-    public Phone(int id, String name, String brand, String description, String thumbImageURL, double price, double rating) {
+    public Phone(int id, String name, String brand, String description, String thumbImageURL, double price, double rating,
+                 boolean isFavorite) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -26,6 +28,7 @@ public class Phone {
         this.thumbImageURL = thumbImageURL;
         this.price = price;
         this.rating = rating;
+        this.isFavorite = isFavorite;
     }
 
     public int getId() {
@@ -82,5 +85,13 @@ public class Phone {
 
     public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 }

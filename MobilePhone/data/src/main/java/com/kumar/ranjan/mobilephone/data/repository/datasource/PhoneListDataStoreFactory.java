@@ -3,6 +3,8 @@ package com.kumar.ranjan.mobilephone.data.repository.datasource;
 import com.kumar.ranjan.mobilephone.data.entity.mapper.JsonMapper;
 import com.kumar.ranjan.mobilephone.data.net.ApiService;
 import com.kumar.ranjan.mobilephone.data.net.ApiServiceImpl;
+import com.kumar.ranjan.mobilephone.data.preference.FavoritesPrefereceStorage;
+import com.kumar.ranjan.mobilephone.data.preference.FavoritesPreferenceStorageImpl;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -26,5 +28,9 @@ public class PhoneListDataStoreFactory {
         ApiService apiService = new ApiServiceImpl(context, jsonMapper);
 
         return new NetworkDataStoreImpl(apiService);
+    }
+
+    public FavoritesPrefereceStorage createFavoritesPhoneStorage() {
+        return new FavoritesPreferenceStorageImpl(context);
     }
 }
