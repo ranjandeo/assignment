@@ -1,32 +1,3 @@
-/*apply plugin: 'com.android.application'
-
-android {
-    compileSdkVersion 27
-    defaultConfig {
-        applicationId "com.kumar.ranjan.mobilephone"
-        minSdkVersion 17
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
-
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-}*/
-
 apply plugin: 'com.android.application'
 
 android {
@@ -74,7 +45,6 @@ dependencies {
 
     def presentationDependencies = rootProject.ext.presentationDependencies
     def presentationTestDependencies = rootProject.ext.presentationTestDependencies
-    def developmentDependencies = rootProject.ext.developmentDependencies
 
     implementation project(':domain')
     implementation project(':data')
@@ -84,6 +54,7 @@ dependencies {
     implementation presentationDependencies.dagger
     implementation presentationDependencies.butterKnife
     implementation presentationDependencies.appCompatV7
+    implementation presentationDependencies.supportV4
     implementation presentationDependencies.constraintLayout
     implementation presentationDependencies.recyclerView
     implementation presentationDependencies.cardView
@@ -94,6 +65,7 @@ dependencies {
     implementation presentationDependencies.guava
     annotationProcessor presentationDependencies.parcelerProcessor
     implementation presentationDependencies.parceler
+    implementation presentationDependencies.design
     implementation presentationTestDependencies.junit
     implementation presentationTestDependencies.testRunner
     implementation presentationTestDependencies.mockito
@@ -106,7 +78,4 @@ dependencies {
     androidTestImplementation presentationTestDependencies.testRunner
     androidTestImplementation presentationTestDependencies.junit
     androidTestImplementation presentationTestDependencies.robolectric
-
-    //Development
-    implementation developmentDependencies.leakCanary
 }
