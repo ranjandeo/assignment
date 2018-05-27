@@ -29,7 +29,7 @@
                     android:background="@color/translucent_black">
 
                 <TextView
-                        android:id="@+id/text_view_price"
+                        android:id="@+id/text_view_rating"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -38,11 +38,11 @@
                         android:layout_marginStart="@dimen/activity_margin"/>
 
                 <TextView
-                        android:id="@+id/text_view_rating"
+                        android:id="@+id/text_view_price"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:gravity="end"
                         android:layout_weight="1"
+                        android:gravity="end"
                         android:textSize="@dimen/content_text_size"
                         android:textColor="@color/white"
                         android:layout_marginEnd="@dimen/activity_margin"/>

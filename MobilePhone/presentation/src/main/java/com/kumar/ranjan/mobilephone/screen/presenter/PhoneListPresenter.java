@@ -1,5 +1,7 @@
 package com.kumar.ranjan.mobilephone.screen.presenter;
 
+import com.google.common.collect.Lists;
+
 import com.kumar.ranjan.mobilephone.di.PerActivity;
 import com.kumar.ranjan.mobilephone.domain.Phone;
 import com.kumar.ranjan.mobilephone.domain.exception.ErrorBundle;
@@ -7,8 +9,10 @@ import com.kumar.ranjan.mobilephone.domain.exception.ErrorBundleImpl;
 import com.kumar.ranjan.mobilephone.domain.interactor.DefaultObserver;
 import com.kumar.ranjan.mobilephone.domain.interactor.GetPhoneList;
 import com.kumar.ranjan.mobilephone.exception.ErrorMessageFactory;
+import com.kumar.ranjan.mobilephone.helper.PhoneListSorter;
 import com.kumar.ranjan.mobilephone.mapper.PhoneDataModelMapper;
 import com.kumar.ranjan.mobilephone.model.PhoneDataModel;
+import com.kumar.ranjan.mobilephone.screen.dialog.SortOptionType;
 import com.kumar.ranjan.mobilephone.screen.fragment.PhoneListScreen;
 
 import android.support.annotation.NonNull;
@@ -23,12 +27,14 @@ public class PhoneListPresenter {
 
     private final GetPhoneList getPhoneListUseCase;
     private final PhoneDataModelMapper phoneDataModelMapper;
+    private List<PhoneDataModel> phoneDataModelList;
 
     @Inject
     public PhoneListPresenter(GetPhoneList getPhoneListUseCase,
                               PhoneDataModelMapper phoneDataModelMapper) {
         this.getPhoneListUseCase = getPhoneListUseCase;
         this.phoneDataModelMapper = phoneDataModelMapper;
+        phoneDataModelList = Lists.newArrayList();
     }
 
     public void setView(@NonNull PhoneListScreen view) {
@@ -67,12 +73,18 @@ public class PhoneListPresenter {
     }
 
     private void showPhoneListInView(List<Phone> phoneList) {
-        List<PhoneDataModel> phoneDataModelList = phoneDataModelMapper.transform(phoneList);
+        phoneDataModelList.clear();
+        phoneDataModelList.addAll(phoneDataModelMapper.transform(phoneList));
         phoneListScreen.displayPhoneList(phoneDataModelList);
     }
 
     private void getUserList() {
         getPhoneListUseCase.execute(new PhoneListObserver(), null);
+    }
+
+    public void applySorting(SortOptionType sortOptionType) {
+        PhoneListSorter sorter = new PhoneListSorter();
+        phoneListScreen.displayPhoneList(sorter.sort(phoneDataModelList, sortOptionType));
     }
 
     private final class PhoneListObserver extends DefaultObserver<List<Phone>> {

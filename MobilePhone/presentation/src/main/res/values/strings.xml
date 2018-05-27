@@ -8,4 +8,16 @@
     <string name="price_text">Price: $%1$s</string>
     <string name="rating_text">Rating: %1$s</string>
     <string name="phone_details">Phone Details</string>
+    <string name="sort">Sort</string>
+
+    <string name="price_low_to_high">Price low to high</string>
+    <string name="price_high_to_low">Price high to low</string>
+    <string name="rating_high_to_low">Rating 5-1</string>
+
+    <string-array name="sorting_options">
+        <item>@string/price_low_to_high</item>
+        <item>@string/price_high_to_low</item>
+        <item>@string/rating_high_to_low</item>
+    </string-array>
+
 </resources>

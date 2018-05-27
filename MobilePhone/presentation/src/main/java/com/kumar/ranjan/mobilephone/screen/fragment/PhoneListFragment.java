@@ -4,6 +4,7 @@ import com.kumar.ranjan.mobilephone.R;
 import com.kumar.ranjan.mobilephone.di.components.PhoneListComponent;
 import com.kumar.ranjan.mobilephone.model.PhoneDataModel;
 import com.kumar.ranjan.mobilephone.screen.adapter.PhoneListAdapter;
+import com.kumar.ranjan.mobilephone.screen.dialog.SortOptionType;
 import com.kumar.ranjan.mobilephone.screen.presenter.PhoneListPresenter;
 
 import android.app.Activity;
@@ -27,6 +28,7 @@ public class PhoneListFragment extends BaseFragment implements PhoneListScreen {
 
     @Inject
     PhoneListPresenter phoneListPresenter;
+
     @Inject
     PhoneListAdapter phoneListAdapter;
 
@@ -149,5 +151,10 @@ public class PhoneListFragment extends BaseFragment implements PhoneListScreen {
         if (phoneListItemClickListener != null) {
             phoneListItemClickListener.onPhoneItemClicked(phoneDataModel);
         }
+    }
+
+    @Override
+    public void applySorting(SortOptionType sortOptionType) {
+        phoneListPresenter.applySorting(sortOptionType);
     }
 }
