@@ -21,7 +21,7 @@ public class FavoritesRepostoryImpl implements FavoritesRepository {
     @Override
     public List<Phone> favoritePhonesList() {
         FavoritesPrefereceStorage favoritesPrefereceStorage = phoneListDataStoreFactory.createFavoritesPhoneStorage();
-        return favoritesPrefereceStorage.retrievePhoneList();
+        return favoritesPrefereceStorage.retrieveFavoriteList();
     }
 
     @Override

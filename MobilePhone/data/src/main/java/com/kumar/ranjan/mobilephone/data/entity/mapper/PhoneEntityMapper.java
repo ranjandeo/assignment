@@ -33,6 +33,7 @@ public class PhoneEntityMapper {
             phone.setThumbImageURL(phoneEntity.getThumbImageURL());
             phone.setPrice(phoneEntity.getPrice());
             phone.setRating(phoneEntity.getRating());
+            phone.setFavorite(false);
         }
 
         return phone;

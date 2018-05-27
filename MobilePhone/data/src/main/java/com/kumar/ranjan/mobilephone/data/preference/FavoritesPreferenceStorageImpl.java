@@ -39,7 +39,7 @@ public class FavoritesPreferenceStorageImpl implements FavoritesPrefereceStorage
     }
 
     @Override
-    public List<Phone> retrievePhoneList() {
+    public List<Phone> retrieveFavoriteList() {
         List<Phone> phoneList = Lists.newArrayList();
         String favoritePhones = favoritesPrefs.getString(FIELD_KEY, "");
         if (!Strings.isNullOrEmpty(favoritePhones)) {

@@ -7,5 +7,5 @@ import java.util.List;
 public interface FavoritesPrefereceStorage {
     void storeFavorites(List<Phone> phoneList);
 
-    List<Phone> retrievePhoneList();
+    List<Phone> retrieveFavoriteList();
 }
