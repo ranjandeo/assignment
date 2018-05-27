@@ -105,6 +105,7 @@ dependencies {
     androidTestImplementation presentationTestDependencies.testingSupportLib
     androidTestImplementation presentationTestDependencies.testRunner
     androidTestImplementation presentationTestDependencies.junit
+    androidTestImplementation presentationTestDependencies.robolectric
 
     //Development
     implementation developmentDependencies.leakCanary

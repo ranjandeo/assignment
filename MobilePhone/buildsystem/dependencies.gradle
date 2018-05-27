@@ -31,7 +31,7 @@ ext {
     glide = '3.7.0'
 
     //Testing
-    robolectricVersion = '3.1.1'
+    robolectricVersion = '3.8'
     jUnitVersion = '4.12'
     assertJVersion = '1.7.1'
     mockitoVersion = '1.9.5'
@@ -68,7 +68,8 @@ ext {
             espresso         : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
             testingSupportLib: "com.android.support.test:testing-support-lib:${testingSupportLibVersion}",
             testRunner       : "com.android.support.test:runner:${testRunner}",
-            junit            : "junit:junit:${jUnitVersion}"
+            junit            : "junit:junit:${jUnitVersion}",
+            robolectric: "org.robolectric:robolectric:${robolectricVersion}"
     ]
 
     domainDependencies = [
@@ -101,7 +102,7 @@ ext {
             junit      : "junit:junit:${jUnitVersion}",
             assertj    : "org.assertj:assertj-core:${assertJVersion}",
             mockito    : "org.mockito:mockito-core:${mockitoVersion}",
-            robolectric: "org.robolectric:robolectric:${robolectricVersion}",
+            robolectric: "org.robolectric:robolectric:${robolectricVersion}"
     ]
 
     developmentDependencies = [
