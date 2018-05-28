@@ -1,7 +1,7 @@
 # Mobile Phone Buyer’s Guide app
 ##### It is developed using CleanArchitecture
 ##### Data and Domain modules are completely covered with Unit Tests
-##### Presentation has UT coverage for models, mappers and presentation as well as for helper classes.
+##### Presentation module has UT coverage for models, mappers, presenters and helper classes.
 
 ### Screenshots and video are attched to walk through the app
 
